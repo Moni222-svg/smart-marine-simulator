@@ -8,6 +8,7 @@ const tabs = [
   { id: 'learning', label: 'Learning', icon: '◈' },
   { id: 'failure', label: 'Failure Sim', icon: '⚠' },
   { id: 'marine', label: 'Marine', icon: '⚓' },
+  { id: 'about', label: 'About', icon: 'ℹ' },
 ];
 
 export default function Header() {

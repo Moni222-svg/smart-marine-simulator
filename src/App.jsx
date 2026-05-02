@@ -10,6 +10,7 @@ import FailureSimulation from './components/modes/FailureSimulation';
 import ExplodedView from './components/modes/ExplodedView';
 import LearningMode from './components/modes/LearningMode';
 import MarineMode from './components/modes/MarineMode';
+import AboutMode from './components/modes/AboutMode';
 import useEngineStore from './store/engineStore';
 
 export default function App() {
@@ -45,6 +46,9 @@ export default function App() {
               <TelemetryDashboard />
               <AIAlertPanel />
             </div>
+
+            {/* Absolute overlay for About mode */}
+            {activeTab === 'about' && <AboutMode />}
           </div>
 
           {/* Bottom — System Logs */}
