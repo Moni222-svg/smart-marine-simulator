@@ -16,12 +16,11 @@ export default function GearSystem({ onClick }) {
   }), [gearWear]);
 
   const housingMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#2a3545', metalness: 0.75, roughness: 0.3,
+    color: '#1a5b8b', metalness: 0.6, roughness: 0.3,
   }), []);
 
   const housingTransMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#334455', metalness: 0.7, roughness: 0.3,
-    transparent: true, opacity: 0.4,
+    color: '#2b7db5', metalness: 0.5, roughness: 0.3,
   }), []);
 
   useFrame((_, delta) => {

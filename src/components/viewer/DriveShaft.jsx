@@ -23,6 +23,11 @@ export default function DriveShaft({ onClick }) {
     const { isRunning, rpm, reverseGear, failures, explodedProgress } = useEngineStore.getState();
     groupRef.current.position.z = -1.6 + explodedProgress * -3.0;
 
+    if (isRunning && rpm > 0 && spinRef.current) {
+      const speed = (rpm / 3000) * 20 * (reverseGear ? -1 : 1);
+      spinRef.current.rotation.z += speed * delta;
+    }
+
     // Misalignment wobble
     if (isRunning && failures.shaftMisalignment) {
       groupRef.current.position.x = Math.sin(Date.now() * 0.01) * 0.02;
@@ -36,26 +41,28 @@ export default function DriveShaft({ onClick }) {
   return (
     <group ref={groupRef} position={[0, -0.2, -1.6]}
       onClick={isClickable ? (e) => { e.stopPropagation(); onClick?.('driveShaft'); } : undefined}>
-      {/* Main shaft along Z */}
-      <mesh material={shaftMat} castShadow rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[0.05, 0.05, 1.3, 16]} />
-      </mesh>
-      {/* Forward coupling (touches gearbox rear at Z=-0.95) */}
-      <mesh position={[0, 0, 0.65]} rotation={[Math.PI / 2, 0, 0]} material={couplingMat} castShadow>
-        <cylinderGeometry args={[0.11, 0.11, 0.06, 20]} />
-      </mesh>
-      {/* Aft coupling (at Z=-2.25, propeller attaches here) */}
-      <mesh position={[0, 0, -0.65]} rotation={[Math.PI / 2, 0, 0]} material={couplingMat} castShadow>
-        <cylinderGeometry args={[0.09, 0.09, 0.05, 18]} />
-      </mesh>
-      {/* Stern tube bearing */}
-      <mesh position={[0, 0, -0.2]} rotation={[Math.PI / 2, 0, 0]} material={couplingMat} castShadow>
-        <cylinderGeometry args={[0.08, 0.08, 0.1, 16]} />
-      </mesh>
-      {/* Stern tube seal */}
-      <mesh position={[0, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} material={couplingMat} castShadow>
-        <torusGeometry args={[0.06, 0.012, 8, 16]} />
-      </mesh>
+      <group ref={spinRef}>
+        {/* Main shaft along Z */}
+        <mesh material={shaftMat} castShadow rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.08, 0.08, 1.3, 24]} />
+        </mesh>
+        {/* Forward coupling (touches gearbox rear at Z=-0.95) */}
+        <mesh position={[0, 0, 0.65]} rotation={[Math.PI / 2, 0, 0]} material={couplingMat} castShadow>
+          <cylinderGeometry args={[0.16, 0.16, 0.08, 24]} />
+        </mesh>
+        {/* Aft coupling (at Z=-2.25, propeller attaches here) */}
+        <mesh position={[0, 0, -0.65]} rotation={[Math.PI / 2, 0, 0]} material={couplingMat} castShadow>
+          <cylinderGeometry args={[0.14, 0.14, 0.08, 24]} />
+        </mesh>
+        {/* Stern tube bearing */}
+        <mesh position={[0, 0, -0.2]} rotation={[Math.PI / 2, 0, 0]} material={couplingMat} castShadow>
+          <cylinderGeometry args={[0.12, 0.12, 0.15, 20]} />
+        </mesh>
+        {/* Stern tube seal */}
+        <mesh position={[0, 0, -0.5]} rotation={[Math.PI / 2, 0, 0]} material={couplingMat} castShadow>
+          <torusGeometry args={[0.09, 0.02, 12, 24]} />
+        </mesh>
+      </group>
     </group>
   );
 }

@@ -12,14 +12,15 @@ export default function EngineBlock({ onClick }) {
   const groupRef = useRef();
   const bodyRef = useRef();
   const activeTab = useEngineStore((s) => s.activeTab);
+  const isRunning = useEngineStore((s) => s.isRunning);
 
   const blockMaterial = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#2a3040', metalness: 0.8, roughness: 0.3,
+    color: '#2b5d34', metalness: 0.6, roughness: 0.4,
   }), []);
 
   const headMaterial = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#3a4a60', metalness: 0.7, roughness: 0.35,
-    emissive: '#001828', emissiveIntensity: 0.15,
+    color: '#3d834b', metalness: 0.5, roughness: 0.45,
+    emissive: '#001800', emissiveIntensity: 0.15,
   }), []);
 
   const overheatMaterial = useMemo(() => new THREE.MeshStandardMaterial({
@@ -110,13 +111,13 @@ export default function EngineBlock({ onClick }) {
       {/* ── Exhaust Manifold (side, runs along X) ── */}
       <mesh position={[0, 0.4, 0.62]} rotation={[0, 0, Math.PI / 2]} castShadow>
         <cylinderGeometry args={[0.08, 0.08, 1.8, 10]} />
-        <meshStandardMaterial color="#3a3a3a" metalness={0.9} roughness={0.2} />
+        <meshStandardMaterial color="#3a3a3a" metalness={0.9} roughness={0.2} emissive="#ff4400" emissiveIntensity={isRunning ? 1.5 : 0} />
       </mesh>
       {/* Exhaust runners from each cylinder */}
       {cylPositions.map((x, i) => (
         <mesh key={`exh-${i}`} position={[x, 0.5, 0.55]} rotation={[Math.PI / 4, 0, 0]} castShadow>
           <cylinderGeometry args={[0.04, 0.04, 0.25, 8]} />
-          <meshStandardMaterial color="#3a3a3a" metalness={0.9} roughness={0.2} />
+          <meshStandardMaterial color="#3a3a3a" metalness={0.9} roughness={0.2} emissive="#ff4400" emissiveIntensity={isRunning ? 2.5 : 0} />
         </mesh>
       ))}
 

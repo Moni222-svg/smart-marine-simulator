@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Environment, Grid, Stars } from '@react-three/drei';
+import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
 import EngineModel from './EngineModel';
 import OceanEnvironment from './OceanEnvironment';
 import useEngineStore from '../../store/engineStore';
@@ -54,7 +55,7 @@ export default function EngineScene() {
     <div className="w-full h-full canvas-container relative">
       <Canvas
         shadows
-        camera={{ position: [3.5, 2.5, 4], fov: 45, near: 0.1, far: 100 }}
+        camera={{ position: [20.0, 4.0, 4.0], fov: 45, near: 0.1, far: 150 }}
         dpr={[1, 2]}
         gl={{ antialias: true, alpha: false }}
         style={{ background: '#050810' }}
@@ -63,7 +64,7 @@ export default function EngineScene() {
           <PhysicsLoop />
           <SceneLighting />
 
-          <fog attach="fog" args={['#050810', 10, 35]} />
+          <fog attach="fog" args={['#050810', 15, 60]} />
 
           <EngineModel />
           <OceanEnvironment />
@@ -92,10 +93,15 @@ export default function EngineScene() {
             enableZoom={true}
             enableRotate={true}
             minDistance={2}
-            maxDistance={15}
-            target={[0, 0, -1.5]}
-            autoRotateSpeed={0.5}
+            maxDistance={50}
+            target={[0, 0, 0]}
+            autoRotate={false}
           />
+          
+          <EffectComposer disableNormalPass>
+            <Bloom luminanceThreshold={0.5} mipmapBlur intensity={1.5} />
+            <Vignette eskil={false} offset={0.1} darkness={1.1} />
+          </EffectComposer>
         </Suspense>
       </Canvas>
 

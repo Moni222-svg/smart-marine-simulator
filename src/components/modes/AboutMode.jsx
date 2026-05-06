@@ -24,15 +24,19 @@ export default function AboutMode() {
         
         <div className="text-white text-lg space-y-2 leading-relaxed font-medium">
           <p className="text-accent-cyan font-bold text-xl mb-4">اتم انجاز المشروع بواسطة:</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-6">
-            <p className="bg-white/5 py-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">فتحي عبد الخالق سيد احمد</p>
-            <p className="bg-white/5 py-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">احمد حسن محمد</p>
-            <p className="bg-white/5 py-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">فارس احمد زيان</p>
-            <p className="bg-white/5 py-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">احمد سمير صلاح</p>
-            <p className="bg-white/5 py-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">احمد سعيد محفوظ</p>
-            <p className="bg-white/5 py-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">السيد خميس السيد</p>
-            <p className="bg-white/5 py-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">مصطفى اسامه السيد</p>
-            <p className="bg-white/5 py-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">عبدالحميد ابراهيم ابراهيم</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-6 text-sm">
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">فتحي عبد الخالق سيد احمد</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">احمد حسن محمد</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">فارس احمد زيان</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">احمد سمير صلاح</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">احمد سعيد محفوظ</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">السيد خميس السيد</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">مصطفى اسامه السيد</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">عبدالحميد ابراهيم ابراهيم</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">أمين صالح محمد محمد</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">يوسف وائل عوض متولى</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">محمد مسعد عبدهللا عرنسة</p>
+            <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">محمد اسامه رمضان جوده</p>
           </div>
           
           <div className="mt-8 pt-6 border-t border-white/10">

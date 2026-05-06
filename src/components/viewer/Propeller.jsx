@@ -39,27 +39,27 @@ export default function Propeller({ onClick }) {
       onClick={isClickable ? (e) => { e.stopPropagation(); onClick?.('propeller'); } : undefined}>
       <group ref={propRef}>
         <mesh material={hubMat} castShadow>
-          <sphereGeometry args={[0.09, 16, 16]} />
+          <sphereGeometry args={[0.18, 24, 24]} />
         </mesh>
-        <mesh position={[0, 0, -0.14]} rotation={[Math.PI / 2, 0, 0]} material={hubMat} castShadow>
-          <coneGeometry args={[0.07, 0.15, 16]} />
+        <mesh position={[0, 0, -0.28]} rotation={[Math.PI / 2, 0, 0]} material={hubMat} castShadow>
+          <coneGeometry args={[0.14, 0.3, 24]} />
         </mesh>
         {Array.from({ length: bladeCount }).map((_, i) => {
           const angle = (i / 4) * Math.PI * 2;
           return (
             <group key={i} rotation={[0, 0, angle]}>
-              <mesh position={[0, 0.35, 0]} rotation={[0.25, 0, 0]} material={bladeMat} castShadow>
-                <boxGeometry args={[0.11, 0.55, 0.02]} />
+              <mesh position={[0, 0.65, 0]} rotation={[0.25, 0, 0]} material={bladeMat} castShadow>
+                <boxGeometry args={[0.25, 1.1, 0.04]} />
               </mesh>
-              <mesh position={[0, 0.1, 0]} material={hubMat} castShadow>
-                <cylinderGeometry args={[0.03, 0.05, 0.06, 8]} />
+              <mesh position={[0, 0.15, 0]} material={hubMat} castShadow>
+                <cylinderGeometry args={[0.06, 0.08, 0.12, 12]} />
               </mesh>
             </group>
           );
         })}
       </group>
-      <mesh position={[0, 0, 0.1]} rotation={[Math.PI / 2, 0, 0]} material={hubMat} castShadow>
-        <cylinderGeometry args={[0.05, 0.05, 0.05, 6]} />
+      <mesh position={[0, 0, 0.15]} rotation={[Math.PI / 2, 0, 0]} material={hubMat} castShadow>
+        <cylinderGeometry args={[0.1, 0.1, 0.1, 16]} />
       </mesh>
     </group>
   );
