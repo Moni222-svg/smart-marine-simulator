@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import useEngineStore from '../../store/engineStore';
 
 export default function AboutMode() {
+  const setActiveTab = useEngineStore((s) => s.setActiveTab);
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -39,9 +41,16 @@ export default function AboutMode() {
             <p className="bg-white/5 py-2 px-2 rounded-lg border border-white/5 hover:border-accent-cyan/30 hover:bg-white/10 transition-colors">محمد اسامه رمضان جوده</p>
           </div>
           
-          <div className="mt-8 pt-6 border-t border-white/10">
+          <div className="mt-8 pt-6 border-t border-white/10 flex flex-col items-center">
             <p className="text-accent-orange font-bold text-xl">تحت اشراف</p>
-            <p className="text-2xl mt-2 text-white">د. حسين المصري</p>
+            <p className="text-2xl mt-2 text-white mb-6">د. حسين المصري</p>
+
+            <button 
+              onClick={() => setActiveTab('marine')}
+              className="px-8 py-2 rounded-lg bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/30 hover:bg-accent-cyan/20 transition-colors font-bold text-lg hover:scale-105 active:scale-95"
+            >
+              العودة للرئيسية
+            </button>
           </div>
         </div>
       </div>
